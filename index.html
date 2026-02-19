@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أمنية (أمنو) في رمضان - برنامج Dr. FAWZY SAEED</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700;900&family=Cairo:wght@300;400;600;700;900&family=Poppins:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        body {
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+            background: linear-gradient(145deg, #0a0f1e 0%, #1a1f2f 100%);
+            min-height: 100vh;
+            padding: 25px;
+            position: relative;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        /* رمضان سحري - خلفية متحركة */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 165, 0, 0.08) 0%, transparent 30%),
+                repeating-linear-gradient(45deg, rgba(255, 215, 0, 0.02) 0px, rgba(255, 215, 0, 0.02) 2px, transparent 2px, transparent 8px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* فوانيس رمضان متحركة */
+        .ramadan-lantern {
+            position: fixed;
+            font-size: 3rem;
+            opacity: 0.2;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .lantern-1 { top: 20px; left: 20px; animation-delay: 0s; }
+        .lantern-2 { bottom: 20px; right: 20px; animation-delay: 2s; }
+        .lantern-3 { top: 50%; left: 10px; animation-delay: 4s; }
+        .lantern-4 { bottom: 30%; right: 30px; animation-delay: 1s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header فخم جداً */
+        .premium-header {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 60px 60px 60px 60px;
+            padding: 25px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 215, 0, 0.3) inset, 0 0 30px rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .doctor-brand {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .doctor-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(145deg, #ffd700, #ffa500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #0a0f1e;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+            border: 3px solid white;
+        }
+
+        .doctor-text h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(145deg, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            font-family: 'Amiri', serif;
+            letter-spacing: 1px;
+        }
+
+        .doctor-text .title {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .doctor-text .title i {
+            color: #ffd700;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .phone-badge {
+            background: linear-gradient(145deg, #ffd700, #ffa500);
+            padding: 15px 30px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.3);
+            border: 2px solid white;
+        }
+
+        .phone-badge i {
+            font-size: 1.8rem;
+            color: #0a0f1e;
+        }
+
+        .phone-badge span {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #0a0f1e;
+            letter-spacing: 1px;
+            direction: ltr;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .lang-btn.active {
+            background: #ffd700;
+            color: #0a0f1e;
+            box-shadow: 0 5px 15px #ffd700;
+        }
+
+        /* Patient Card - تحفة فنية */
+        .patient-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .patient-profile {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .patient-profile::after {
+            content: '🌙✨';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 3rem;
+            opacity: 0.1;
+        }
+
+        .patient-name {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-family: 'Amiri', serif;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .patient-stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 40px;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stat-item i {
+            font-size: 2rem;
+            color: #ffd700;
+        }
+
+        .stat-info h4 {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .stat-info p {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #ffd700;
+        }
+
+        .goal-box {
+            background: linear-gradient(145deg, #ffd700, #ffa500);
+            border-radius: 40px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #0a0f1e;
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+            border: 3px solid white;
+        }
+
+        .goal-box h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .goal-box .target {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin: 15px 0;
+        }
+
+        .goal-box i {
+            font-size: 3rem;
+            margin: 10px 0;
+        }
+
+        /* Weekly Navigation */
+        .week-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .week-tab {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 70px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.4s;
+            font-family: 'Amiri', serif;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .week-tab.active {
+            background: #ffd700;
+            color: #0a0f1e;
+            border-color: white;
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 25px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .week-tab i {
+            margin-left: 10px;
+            color: inherit;
+        }
+
+        /* Meal Cards - تصميم رمضاني فاخر */
+        .week-content {
+            display: none;
+        }
+
+        .week-content.active {
+            display: block;
+        }
+
+        .meals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .meal-luxury-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meal-luxury-card::before {
+            content: '🏮';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 8rem;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+
+        .meal-icon-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed rgba(255, 215, 0, 0.4);
+        }
+
+        .meal-icon-header i {
+            font-size: 3rem;
+            color: #ffd700;
+            filter: drop-shadow(0 0 15px #ffd700);
+        }
+
+        .meal-icon-header h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ffd700;
+            font-family: 'Amiri', serif;
+        }
+
+        .meal-items-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .meal-items-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1.1rem;
+        }
+
+        .arabic-text, .english-text {
+            transition: 0.2s;
+        }
+
+        .cal-chip {
+            background: rgba(255, 215, 0, 0.15);
+            color: #ffd700;
+            padding: 5px 15px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .meal-total {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #ffd700;
+            padding-top: 15px;
+            border-top: 2px solid rgba(255, 215, 0, 0.4);
+        }
+
+        .daily-summary {
+            background: linear-gradient(145deg, #ffd700, #ffa500);
+            border-radius: 100px;
+            padding: 25px 50px;
+            margin: 40px 0;
+            display: inline-block;
+            color: #0a0f1e;
+            font-weight: 900;
+            font-size: 1.8rem;
+            box-shadow: 0 25px 40px rgba(255, 215, 0, 0.4);
+            border: 3px solid white;
+        }
+
+        /* Footer فخم */
+        .ramadan-footer {
+            margin-top: 80px;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border-radius: 70px 70px 30px 30px;
+            padding: 50px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-signature {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(145deg, #ffd700, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Amiri', serif;
+        }
+
+        .footer-contact {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 15px 30px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .contact-item i {
+            color: #ffd700;
+            font-size: 1.4rem;
+        }
+
+        .ramadan-wish {
+            font-size: 2rem;
+            letter-spacing: 5px;
+        }
+
+        .motivation-quote {
+            font-size: 1.6rem;
+            color: #ffd700;
+            font-family: 'Amiri', serif;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px 50px;
+            border-radius: 120px;
+            border: 2px dashed #ffd700;
+        }
+
+        /* English mode adjustments */
+        body[dir="ltr"] {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body[dir="ltr"] .doctor-text h1,
+        body[dir="ltr"] .footer-signature {
+            background: linear-gradient(145deg, #ffd700, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .meals-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .patient-showcase {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <!-- فوانيس رمضان متحركة -->
+    <div class="ramadan-lantern lantern-1">🏮</div>
+    <div class="ramadan-lantern lantern-2">🏮</div>
+    <div class="ramadan-lantern lantern-3">🕌</div>
+    <div class="ramadan-lantern lantern-4">🌙</div>
+
+    <div class="container">
+        <!-- Header بـ Dr/FAWZY SAEED -->
+        <div class="premium-header">
+            <div class="header-content">
+                <div class="doctor-brand">
+                    <div class="doctor-icon">
+                        <i class="fas fa-star-and-crescent"></i>
+                    </div>
+                    <div class="doctor-text">
+                        <h1>Dr/FAWZY SAEED</h1>
+                        <div class="title">
+                            <i class="fas fa-ribbon"></i>
+                            <span class="arabic-text">أخصائي التغذية العلاجية</span>
+                            <span class="english-text" style="display: none;">Clinical Nutrition Specialist</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <div class="phone-badge">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+201115384357</span>
+                    </div>
+                    <div class="lang-switch">
+                        <button class="lang-btn active" onclick="setLanguage('ar')">العربية</button>
+                        <button class="lang-btn" onclick="setLanguage('en')">English</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patient Profile - Omnia (Omno) -->
+        <div class="patient-showcase">
+            <div class="patient-profile">
+                <div class="patient-name">
+                    <span class="arabic-text">✨ أمنية (أمنو) ✨</span>
+                    <span class="english-text" style="display: none;">✨ Omnia (Omno) ✨</span>
+                </div>
+                <div class="patient-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-weight-scale"></i>
+                        <div class="stat-info">
+                            <h4 class="arabic-text">الوزن الحالي</h4>
+                            <h4 class="english-text" style="display: none;">Current Weight</h4>
+                            <p>90 kg</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-bullseye"></i>
+                        <div class="stat-info">
+                            <h4 class="arabic-text">الهدف</h4>
+                            <h4 class="english-text" style="display: none;">Target</h4>
+                            <p>78 kg</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-fire"></i>
+                        <div class="stat-info">
+                            <h4 class="arabic-text">الدهون المستهدفة</h4>
+                            <h4 class="english-text" style="display: none;">Fat to Lose</h4>
+                            <p>12 kg</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <i class="fas fa-moon" style="color: #ffd700; margin-left: 10px;"></i>
+                    <span class="arabic-text">رمضان فرصتك الذهبية للتغيير</span>
+                    <span class="english-text" style="display: none;">Ramadan is your golden chance to change</span>
+                </div>
+            </div>
+            <div class="goal-box">
+                <i class="fas fa-star-and-crescent"></i>
+                <h3 class="arabic-text">هدف الشهر</h3>
+                <h3 class="english-text" style="display: none;">Month Goal</h3>
+                <div class="target">-12 kg</div>
+                <p class="arabic-text">دهون نقية 💪</p>
+                <p class="english-text" style="display: none;">Pure Fat Loss 💪</p>
+                <i class="fas fa-star-and-crescent"></i>
+            </div>
+        </div>
+
+        <!-- Weekly Navigation -->
+        <div class="week-navigation">
+            <div class="week-tab active" onclick="showWeek(1)">
+                <i class="fas fa-moon"></i>
+                <span class="arabic-text">الأسبوع الأول</span>
+                <span class="english-text" style="display: none;">Week 1</span>
+            </div>
+            <div class="week-tab" onclick="showWeek(2)">
+                <i class="fas fa-moon"></i>
+                <span class="arabic-text">الأسبوع الثاني</span>
+                <span class="english-text" style="display: none;">Week 2</span>
+            </div>
+            <div class="week-tab" onclick="showWeek(3)">
+                <i class="fas fa-moon"></i>
+                <span class="arabic-text">الأسبوع الثالث</span>
+                <span class="english-text" style="display: none;">Week 3</span>
+            </div>
+            <div class="week-tab" onclick="showWeek(4)">
+                <i class="fas fa-moon"></i>
+                <span class="arabic-text">الأسبوع الرابع</span>
+                <span class="english-text" style="display: none;">Week 4</span>
+            </div>
+        </div>
+
+        <!-- Week 1 Content -->
+        <div id="week1" class="week-content active">
+            <div class="meals-grid">
+                <!-- Iftar -->
+                <div class="meal-luxury-card">
+                    <div class="meal-icon-header">
+                        <i class="fas fa-sunset"></i>
+                        <h3>الإفطار • Iftar</h3>
+                    </div>
+                    <ul class="meal-items-list">
+                        <li><span class="arabic-text">3 تمرات + كوب ماء</span><span class="english-text" style="display: none;">3 Dates + Water</span> <span class="cal-chip">90 cal</span></li>
+                        <li><span class="arabic-text">كوسة وجزر مشويين</span><span class="english-text" style="display: none;">Grilled Zucchini & Carrots</span> <span class="cal-chip">60 cal</span></li>
+                        <li><span class="arabic-text">سلطة خضراء كبيرة (خل تفاح)</span><span class="english-text" style="display: none;">Green Salad (ACV)</span> <span class="cal-chip">70 cal</span></li>
+                        <li><span class="arabic-text">صدر فرخة مشوي (200 جم)</span><span class="english-text" style="display: none;">Grilled Chicken (200g)</span> <span class="cal-chip">250 cal</span></li>
+                        <li><span class="arabic-text">3 ملاعق أرز بني</span><span class="english-text" style="display: none;">Brown Rice (3 spoons)</span> <span class="cal-chip">90 cal</span></li>
+                    </ul>
+                    <div class="meal-total">560 <span class="arabic-text">سعرة</span><span class="english-text" style="display: none;">cal</span></div>
+                </div>
+                <!-- Post Iftar -->
+                <div class="meal-luxury-card">
+                    <div class="meal-icon-header">
+                        <i class="fas fa-mug-hot"></i>
+                        <h3>بعد الإفطار • Post Iftar</h3>
+                    </div>
+                    <ul class="meal-items-list">
+                        <li><span class="arabic-text">شاي أخضر بالنعناع</span><span class="english-text" style="display: none;">Green Tea with Mint</span> <span class="cal-chip">5 cal</span></li>
+                        <li><span class="arabic-text">تفاح أخضر</span><span class="english-text" style="display: none;">Green Apple</span> <span class="cal-chip">80 cal</span></li>
+                        <li><span class="arabic-text">5 حبات لوز</span><span class="english-text" style="display: none;">5 Almonds</span> <span class="cal-chip">35 cal</span></li>
+                    </ul>
+                    <div class="meal-total">120 <span class="arabic-text">سعرة</span><span class="english-text" style="display: none;">cal</span></div>
+                </div>
+                <!-- Suhoor -->
+                <div class="meal-luxury-card">
+                    <div class="meal-icon-header">
+                        <i class="fas fa-cloud-moon"></i>
+                        <h3>السحور • Suhoor</h3>
+                    </div>
+                    <ul class="meal-items-list">
+                        <li><span class="arabic-text">زبادي يوناني</span><span class="english-text" style="display: none;">Greek Yogurt</span> <span class="cal-chip">100 cal</span></li>
+                        <li><span class="arabic-text">بيضة + بياض بيضة</span><span class="english-text" style="display: none;">1 Egg + 1 Egg White</span> <span class="cal-chip">100 cal</span></li>
+                        <li><span class="arabic-text">ربع رغيف أسمر</span><span class="english-text" style="display: none;">1/4 Brown Bread</span> <span class="cal-chip">70 cal</span></li>
+                        <li><span class="arabic-text">خيار + خس + جزر</span><span class="english-text" style="display: none;">Cucumber, Lettuce, Carrot</span> <span class="cal-chip">30 cal</span></li>
+                        <li><span class="arabic-text">عسل أسود (ملعقة)</span><span class="english-text" style="display: none;">Black Honey (spoon)</span> <span class="cal-chip">40 cal</span></li>
+                    </ul>
+                    <div class="meal-total">340 <span class="arabic-text">سعرة</span><span class="english-text" style="display: none;">cal</span></div>
+                </div>
+            </div>
+            <div class="daily-summary">
+                <i class="fas fa-utensils"></i> 
+                <span class="arabic-text">الإجمالي اليومي: 1020 سعرة</span>
+                <span class="english-text" style="display: none;">Daily Total: 1020 kcal</span>
+                <i class="fas fa-utensils"></i>
+            </div>
+        </div>
+
+        <!-- Week 2 Content -->
+        <div id="week2" class="week-content">
+            <div class="meals-grid">
+                <div class="meal-luxury-card">
+                    <div class="meal-icon-header"><i class="fas fa-sunset"></i><h3>الإفطار • Iftar</h3></div>
+                    <ul class="meal-items-list">
+                        <li><span class="arabic-text">3 تمرات</span><span class="english-text" style="display: none;">3 Dates</span> <span class="cal-chip">90 cal</span></li>
+                        <li><span class="arabic-text">كوسة وجزر مشويين</span><span class="english-text" style="display: none;">Grilled Zucchini & Carrots</span> <span class="cal-chip">60 cal</span></li>
+                        <li><span class="arabic-text">سلطة تبولة</span><span class="english-text" style="display: none;">Tabbouleh</span> <span class="cal-chip">80 cal</span></li>
+                        <li><span class="arabic-text">لحم بقري مشوي (150 جم)</span><span class="english-text" style="display: none;">Grilled Beef (150g)</span> <span class="cal-chip">280 cal</span></li>
+                        <li><span class="arabic-text">خضار سوتيه</span><span class="english-text" style="display: none;">Sautéed Veggies</span> <span class="cal-chip">60 cal</span></li>
+                    </ul>
+                    <div class="meal-total">570 cal</div>
+                </div>
+                <div class="meal-luxury-card">
+                    <div class="meal-icon-header"><i class="fas fa-mug-hot"></i><h3>بعد الإفطار • Post Iftar</h3></div>
+                    <ul class="meal-items-list">
+                        <li><span class="arabic-text">شاي أخضر بالنعناع</span><span class="english-text" style="display: none;">Green Tea with Mint</span> <span class="cal-chip">5 cal</span></li>
+                        <li><span class="arabic-text">لوز (10 حبات)</span><span class="english-text" style="display: none;">Almonds (10 pcs)</span> <span class="cal-chip">70 cal</span></li>
+                    </ul>
+                    <div class="meal-total">75 cal</div>
+                </div>
+                <div class="meal-luxury-card">
+                    <div class="meal-icon-header"><i class="fas fa-cloud-moon"></i><h3>السحور • Suhoor</h3></div>
+                    <ul class="meal-items-list">
+                        <li><span class="arabic-text">شوفان بالحليب</span><span class="english-text" style="display: none;">Oats with Milk</span> <span class="cal-chip">260 cal</span></li>
+                        <li><span class="arabic-text">موزة</span><span class="english-text" style="display: none;">Banana</span> <span class="cal-chip">100 cal</span></li>
+                        <li><span class="arabic-text">زبدة فول سوداني</span><span class="english-text" style="display: none;">Peanut Butter</span> <span class="cal-chip">50 cal</span></li>
+                    </ul>
+                    <div class="meal-total">410 cal</div>
+                </div>
+            </div>
+            <div class="daily-summary">⚡ الإجمالي اليومي: 1055 سعرة • Daily Total: 1055 kcal ⚡</div>
+        </div>
+
+        <!-- Week 3 Content -->
+        <div id="week3" class="week-content">
+            <div class="meals-grid">
+                <div class="meal-luxury-card">
+                    <div class="meal-icon-header"><i class="fas fa-sunset"></i><h3>الإفطار • Iftar</h3></div>
+                    <ul class="meal-items-list">
+                        <li><span class="arabic-text">3 تمرات</span><span class="english-text" style="display: none;">3 Dates</span> <span class="cal-chip">90 cal</span></li>
+                        <li><span class="arabic-text">كوسة وجزر مشويين</span><span class="english-text" style="display: none;">Grilled Zucchini & Carrots</span> <span class="cal-chip">60 cal</span></li>
+                        <li><span class="arabic-text">سلطة جرجير</span><span class="english-text" style="display: none;">Arugula Salad</span> <span class="cal-chip">90 cal</span></li>
+                        <li><span class="arabic-text">فيليه سمك مشوي</span><span class="english-text" style="display: none;">Grilled Fish Fillet</span> <span class="cal-chip">220 cal</span></li>
+                        <li><span class="arabic-text">بروكلي مسلوق</span><span class="english-text" style="display: none;">Steamed Broccoli</span> <span class="cal-chip">40 cal</span></li>
+                    </ul>
+                    <div class="meal-total">500 cal</div>
+                </div>
+                <div class="meal-luxury-card">
+                    <div class="meal-icon-header"><i class="fas fa-mug-hot"></i><h3>بعد الإفطار • Post Iftar</h3></div>
+                    <ul class="meal-items-list">
+                        <li><span class="arabic-text">شاي أخضر بالنعناع</span><span class="english-text" style="display: none;">Green Tea with Mint</span> <span class="cal-chip">5 cal</span></li>
+                        <li><span class="arabic-text">كاجو (5 حبات)</span><span class="english-text" style="display: none;">Cashews (5 pcs)</span> <span class="cal-chip">50 cal</span></li>
+                    </ul>
+                    <div class="meal-total">55 cal</div>
+                </div>
+                <div class="meal-luxury-card">
+                    <div class="meal-icon-header"><i class="fas fa-cloud-moon"></i><h3>السحور • Suhoor</h3></div>
+                    <ul class="meal-items-list">
+                        <li><span class="arabic-text">أومليت (2 بيضة)</span><span class="english-text" style="display: none;">Omelette (2 Eggs)</span> <span class="cal-chip">180 cal</span></li>
+                        <li><span class="arabic-text">جبنة قريش</span><span class="english-text" style="display: none;">Cottage Cheese</span> <span class="cal-chip">70 cal</span></li>
+                        <li><span class="arabic-text">خيار وطماطم</span><span class="english-text" style="display: none;">Cucumber & Tomato</span> <span class="cal-chip">20 cal</span></li>
+                        <li><span class="arabic-text">توست أسمر</span><span class="english-text" style="display: none;">Brown Toast</span> <span class="cal-chip">70 cal</span></li>
+                    </ul>
+                    <div class="meal-total">340 cal</div>
+                </div>
+            </div>
+            <div class="daily-summary">🔥 الإجمالي اليومي: 895 سعرة • Daily Total: 895 kcal 🔥</div>
+        </div>
+
+        <!-- Week 4 Content -->
+        <div id="week4" class="week-content">
+            <div class="meals-grid">
+                <div class="meal-luxury-card">
+                    <div class="meal-icon-header"><i class="fas fa-sunset"></i><h3>الإفطار • Iftar</h3></div>
+                    <ul class="meal-items-list">
+                        <li><span class="arabic-text">3 تمرات + ماء بليمون</span><span class="english-text" style="display: none;">3 Dates + Lemon Water</span> <span class="cal-chip">90 cal</span></li>
+                        <li><span class="arabic-text">كوسة وجزر مشويين</span><span class="english-text" style="display: none;">Grilled Zucchini & Carrots</span> <span class="cal-chip">60 cal</span></li>
+                        <li><span class="arabic-text">سلطة زبادي بالخيار</span><span class="english-text" style="display: none;">Yogurt Cucumber Salad</span> <span class="cal-chip">60 cal</span></li>
+                        <li><span class="arabic-text">كفتة دجاج مشوية</span><span class="english-text" style="display: none;">Grilled Chicken Kofta</span> <span class="cal-chip">200 cal</span></li>
+                        <li><span class="arabic-text">فاصوليا خضراء</span><span class="english-text" style="display: none;">Green Beans</span> <span class="cal-chip">70 cal</span></li>
+                    </ul>
+                    <div class="meal-total">480 cal</div>
+                </div>
+                <div class="meal-luxury-card">
+                    <div class="meal-icon-header"><i class="fas fa-mug-hot"></i><h3>بعد الإفطار • Post Iftar</h3></div>
+                    <ul class="meal-items-list">
+                        <li><span class="arabic-text">شاي أخضر بالنعناع</span><span class="english-text" style="display: none;">Green Tea with Mint</span> <span class="cal-chip">5 cal</span></li>
+                        <li><span class="arabic-text">برتقالة</span><span class="english-text" style="display: none;">Orange</span> <span class="cal-chip">60 cal</span></li>
+                    </ul>
+                    <div class="meal-total">65 cal</div>
+                </div>
+                <div class="meal-luxury-card">
+                    <div class="meal-icon-header"><i class="fas fa-cloud-moon"></i><h3>السحور • Suhoor</h3></div>
+                    <ul class="meal-items-list">
+                        <li><span class="arabic-text">زبادي بالتوت</span><span class="english-text" style="display: none;">Yogurt with Berries</span> <span class="cal-chip">120 cal</span></li>
+                        <li><span class="arabic-text">بيضة مسلوقة</span><span class="english-text" style="display: none;">Boiled Egg</span> <span class="cal-chip">70 cal</span></li>
+                        <li><span class="arabic-text">شوفان (2 ملعقة)</span><span class="english-text" style="display: none;">Oats (2 spoons)</span> <span class="cal-chip">70 cal</span></li>
+                    </ul>
+                    <div class="meal-total">260 cal</div>
+                </div>
+            </div>
+            <div class="daily-summary">💪 الإجمالي اليومي: 805 سعرة • Daily Total: 805 kcal 💪</div>
+        </div>
+
+        <!-- Footer فخم جداً -->
+        <div class="ramadan-footer">
+            <div class="footer-content">
+                <div class="footer-signature">Dr/FAWZY SAEED</div>
+                
+                <div class="footer-contact">
+                    <div class="contact-item"><i class="fas fa-phone-alt"></i> <span dir="ltr">+201115384357</span></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i> dr.fawzy@ramadan.fit</div>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Egypt • Cairo</div>
+                </div>
+
+                <div class="ramadan-wish">
+                    <span>🌙 ✨ 🕌 ✨ 🌙</span>
+                </div>
+
+                <div class="motivation-quote">
+                    <i class="fas fa-quote-right"></i>
+                    <span class="arabic-text">أمنو، ثقتك بنا هي سر نجاحك. 12 كجم دهون رحالة في رمضان ❤️</span>
+                    <span class="english-text" style="display: none;">Omno, your trust is our success. 12 kg fat will vanish this Ramadan ❤️</span>
+                    <i class="fas fa-quote-left"></i>
+                </div>
+
+                <div style="color: rgba(255,255,255,0.3); font-size: 0.9rem;">
+                    © 2026 Dr/FAWZY SAEED • Ramadan Special Edition
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showWeek(weekNumber) {
+            document.querySelectorAll('.week-content').forEach(week => {
+                week.classList.remove('active');
+            });
+            document.getElementById(`week${weekNumber}`).classList.add('active');
+            
+            document.querySelectorAll('.week-tab').forEach((tab, index) => {
+                if (index === weekNumber - 1) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+        }
+
+        function setLanguage(lang) {
+            const body = document.body;
+            const arabicElements = document.querySelectorAll('.arabic-text');
+            const englishElements = document.querySelectorAll('.english-text');
+            const langBtns = document.querySelectorAll('.lang-btn');
+            
+            if (lang === 'ar') {
+                body.setAttribute('dir', 'rtl');
+                arabicElements.forEach(el => el.style.display = 'inline');
+                englishElements.forEach(el => el.style.display = 'none');
+                langBtns[0].classList.add('active');
+                langBtns[1].classList.remove('active');
+                
+                // Update week tab text
+                document.querySelectorAll('.week-tab').forEach((tab, index) => {
+                    const arabicWeeks = ['الأسبوع الأول', 'الأسبوع الثاني', 'الأسبوع الثالث', 'الأسبوع الرابع'];
+                    tab.innerHTML = `<i class="fas fa-moon"></i> ${arabicWeeks[index]}`;
+                });
+            } else {
+                body.setAttribute('dir', 'ltr');
+                arabicElements.forEach(el => el.style.display = 'none');
+                englishElements.forEach(el => el.style.display = 'inline');
+                langBtns[0].classList.remove('active');
+                langBtns[1].classList.add('active');
+                
+                // Update week tab text
+                document.querySelectorAll('.week-tab').forEach((tab, index) => {
+                    const englishWeeks = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
+                    tab.innerHTML = `<i class="fas fa-moon"></i> ${englishWeeks[index]}`;
+                });
+            }
+        }
+    </script>
+</body>
+</html>
